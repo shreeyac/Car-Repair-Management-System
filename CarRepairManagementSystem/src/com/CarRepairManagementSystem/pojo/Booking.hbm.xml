@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.CarRepairManagementSystem.pojo.Booking" 
+    table="booking"
+>
+
+    <id
+        name="pkBookingId"
+        type="java.lang.Long"
+        column="pkBookingId"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="native" />
+    </id>
+
+	<property
+        name="bookingDate"
+        type="java.lang.String"
+        column="bookingDate"
+        not-null="true"
+        length="19"
+    />
+    <property
+        name="timeOfBooking"
+        type="java.lang.String"
+        column="timeOfBooking"
+        not-null="true"
+        length="19"
+    />
+     
+    <property
+        name="totalBookingPrice"
+        type="java.lang.Long"
+        column="totalBookingPrice"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="isActive"
+        type="java.lang.String"
+        column="isActive"
+        length="10"
+    />
+    <property
+        name="createdDate"
+        type="java.sql.Date"
+        column="createdDate"
+        length="10"
+    />
+    <property
+        name="createdBy"
+        type="java.lang.String"
+        column="createdBy"
+        length="20"
+    />
+    <property
+        name="modifyDate"
+        type="java.sql.Date"
+        column="modifyDate"
+        length="10"
+    />
+    <property
+        name="modifyBy"
+        type="java.lang.String"
+        column="modifyBy"
+        length="20"
+    />
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to BookingItem -->
+    <set
+        name="bookingItems"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="fkBookingId" />
+        </key>
+        <one-to-many 
+            class="com.CarRepairManagementSystem.pojo.BookingItem"
+        />
+    </set>
+    <!-- bi-directional many-to-one association to CarModal -->
+    <many-to-one
+        name="carModal"
+        class="com.CarRepairManagementSystem.pojo.CarModal"
+        not-null="true"
+    >
+        <column name="fkModalId" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Customer -->
+    <many-to-one
+        name="customer"
+        class="com.CarRepairManagementSystem.pojo.Customer"
+        not-null="true"
+    >
+        <column name="fkCustomerId" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.CarRepairManagementSystem.pojo.Customer" 
+    table="customer"
+>
+
+    <id
+        name="pkCustomerId"
+        type="java.lang.Long"
+        column="pkCustomerId"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="native" />
+    </id>
+
+    <property
+        name="firstName"
+        type="java.lang.String"
+        column="firstName"
+        not-null="true"
+        length="30"
+    />
+    <property
+        name="lastName"
+        type="java.lang.String"
+        column="lastName"
+        not-null="true"
+        length="30"
+    />
+    <property
+        name="mobileNo"
+        type="java.lang.String"
+        column="mobileNo"
+        not-null="true"
+        length="40"
+    />
+    <property
+        name="email"
+        type="java.lang.String"
+        column="email"
+        not-null="true"
+        length="50"
+    />
+   
+    <property
+        name="city"
+        type="java.lang.String"
+        column="city"
+        not-null="true"
+        length="50"
+    />
+    <property
+        name="address"
+        type="java.lang.String"
+        column="address"
+        not-null="true"
+        length="200"
+    />
+    
+    <property
+        name="password"
+        type="java.lang.String"
+        column="password"
+        not-null="true"
+        length="50"
+    />
+    <property
+        name="isAdmin"
+        type="java.lang.String"
+        column="isAdmin"
+        length="10"
+    />
+    <property
+        name="isActive"
+        type="java.lang.String"
+        column="isActive"
+        length="10"
+    />
+    <property
+        name="createdDate"
+        type="java.sql.Date"
+        column="createdDate"
+        length="10"
+    />
+    <property
+        name="createdBy"
+        type="java.lang.String"
+        column="createdBy"
+        length="20"
+    />
+    <property
+        name="modifyDate"
+        type="java.sql.Date"
+        column="modifyDate"
+        length="10"
+    />
+    <property
+        name="modifyBy"
+        type="java.lang.String"
+        column="modifyBy"
+        length="20"
+    />
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to Booking -->
+    <set
+        name="bookings"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="fkCustomerId" />
+        </key>
+        <one-to-many 
+            class="com.CarRepairManagementSystem.pojo.Booking"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

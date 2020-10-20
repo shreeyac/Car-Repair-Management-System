@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CarRepairManagementSystem" default="deployMyApp">
+	<property name="srcdir" value="src" />
+	<property name="libdir" value="${basedir}/lib" />
+	<property name="bindir" value="${basedir}/WebContent/WEB-INF/classes" />
+	<property name="gensrcdir" value="src" />
+	<property name="projectname" value="CarRepairManagementSystem" />
+	<property file="database.properties" />
+
+	<path id="cp">
+		<fileset dir="${libdir}"/>
+	</path>
+
+
+	<target name="gen-hbm">
+		<taskdef name="middlegen" classname="middlegen.MiddlegenTask" classpathref="cp" />
+		<middlegen appname="${projectname}" prefsdir="${srcdir}" gui="false" databaseurl="${db.url}" driver="${db.driver}" username="${db.user}" password="${db.password}" schema="" catalog="" includeViews="false">
+
+			<table generate="true" name="booking"/>
+			<table generate="true" name="booking_item"/>
+			<table generate="true" name="car_modal"/>
+			<table generate="true" name="customer"/>
+			<table generate="true" name="description" />
+			<table generate="true" name="job"/>
+			<table generate="true" name="type_of_job" />
+			<table generate="true" name="vechicle_brand"/>
+
+			<!-- Plugins -->
+			<hibernate destination="${basedir}\${srcdir}" package="com.${projectname}.pojo" javaTypeMapper="middlegen.plugins.hibernate.HibernateJavaTypeMapper" />
+		</middlegen>
+	</target>
+
+	<target name="gen-java" depends="gen-hbm">
+		<taskdef name="hbm2java" classname="net.sf.hibernate.tool.hbm2java.Hbm2JavaTask" classpathref="cp" />
+
+		<hbm2java output="${basedir}\${srcdir}">
+			<fileset dir="${basedir}\${srcdir}">
+				<include name="**/*.hbm.xml" />
+
+			</fileset>
+		</hbm2java>
+	</target>
+
+	<target name="clean">
+		<delete dir="WebContent/WEB-INF/classes"/>
+		<delete dir="dist"/>
+		<delete file="C:/Users/Shreya/jboss-4.2.3.GA/server/default/deploy/${projectname}.war"/>
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="WebContent/WEB-INF/classes" />
+		<mkdir dir="dist" />
+
+	</target>
+
+	<target name="compile" depends="init">
+		<javac destdir="WebContent/WEB-INF/classes" debug="true" srcdir="src">
+			<classpath refid="cp"/>
+		</javac>
+
+		<copy todir="${bindir}">
+			<fileset dir="src">
+				<include name="**/*.properties" />
+				<include name="*.cfg.xml" />
+				<include name="**/*.hbm.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="war" depends="compile">
+		<war destfile="dist/${projectname}.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent"/>
+			<lib dir="${libdir}"/>
+			<classes dir="${bindir}"/>
+		</war>
+	</target>
+
+	<target name="deployMyApp" depends="war">
+		<copy todir="C:/Users/Shreya/jboss-4.2.3.GA/server/default/deploy" file="dist/${projectname}.war">
+		</copy>
+	</target>
+</project>

@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.CarRepairManagementSystem.pojo.Job" 
+    table="job"
+>
+
+    <id
+        name="pkJobId"
+        type="java.lang.Long"
+        column="pkJobId"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="increment" />
+    </id>
+
+    <property
+        name="jobName"
+        type="java.lang.String"
+        column="jobName"
+        not-null="true"
+        length="100"
+    />
+    <property
+        name="timeRequired"
+        type="java.lang.Integer"
+        column="timeRequired"
+        not-null="true"
+        length="250"
+    />
+    <property
+        name="whyNeeded"
+        type="java.lang.String"
+        column="whyNeeded"
+        
+        length="600"
+    />
+    <property
+        name="price"
+        type="java.math.BigDecimal"
+        column="price"
+        not-null="true"
+        length="10"
+    />
+    <property
+        name="jobImage"
+        type="java.lang.String"
+        column="jobImage"
+        length="250"
+    />
+    <property
+        name="isActive"
+        type="java.lang.String"
+        column="isActive"
+        length="20"
+    />
+    <property
+        name="createdDate"
+        type="java.sql.Date"
+        column="createdDate"
+        length="10"
+    />
+    <property
+        name="createdBy"
+        type="java.lang.String"
+        column="createdBy"
+        length="20"
+    />
+    <property
+        name="modifyDate"
+        type="java.sql.Date"
+        column="modifyDate"
+        length="10"
+    />
+    <property
+        name="modifyBy"
+        type="java.lang.String"
+        column="modifyBy"
+        length="20"
+    />
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to TypeOfJob -->
+    <many-to-one
+        name="typeOfJob"
+        class="com.CarRepairManagementSystem.pojo.TypeOfJob"
+        not-null="true"
+    >
+        <column name="fkTypeOfJobId" />
+    </many-to-one>
+    <!-- bi-directional many-to-one association to Description -->
+    <many-to-one
+        name="description"
+        class="com.CarRepairManagementSystem.pojo.Description"
+        not-null="true"
+    >
+        <column name="fkDescriptionid" />
+    </many-to-one>
+    <!-- bi-directional one-to-many association to Description -->
+    <set
+        name="descriptions"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="fkJobId" />
+        </key>
+        <one-to-many 
+            class="com.CarRepairManagementSystem.pojo.Description"
+        />
+    </set>
+    <!-- bi-directional one-to-many association to BookingItem -->
+    <set
+        name="bookingItems"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="fkJobId" />
+        </key>
+        <one-to-many 
+            class="com.CarRepairManagementSystem.pojo.BookingItem"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

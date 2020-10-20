@@ -1,0 +1,54 @@
+*{margin: 0;padding: 0;}
+nav{width:100%;overflow:auto;background:url('../images/navBackground.PNG');}
+ul{padding:0px;margin:0 0 0 250px;list-style:none}
+li{float:left}
+li a{width:103px;display:block;padding:22px 15px; text-decoration:none;font-family:arial;text-align:center;color:black}
+li a:hover{background:#f1f1f1}
+.box-area{width:100%;}
+.logo img{position:absolute;margin-top:5px;margin-left:10px;}
+.clr{content: "";clear: both;}
+.container-fluid{background-image: url('../images/container_fluid_bg.PNG');height:600px;background-attachment: fixed;background-position: center center;background-size: cover;}
+.row-container-fluid{width:100%;margin:0 auto;}
+.overlap{background-color:rgba(215, 56, 35, 0.20);width:100%;height:440px;}
+.overlap-two{background-color:rgba(66, 31, 134, 0.25);width:100%;height:160px;}
+.container-fluid-column-right{width:44%;float:left;height:216px;padding:20px;background-color:#fff;margin-top: 146px;box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);border-radius:7px;}
+.container-fluid-column-left{width:44%;height:216px;float:left;padding:20px;margin-top: 146px; text-align: center;color:white;line-height: 1.5;font-weight: normal;}
+.overlap-two-left{width: 23%; padding: 66px 20px;float:left;}
+.overlap-two-right{width:80%;}
+.brand{float:left;padding: 42px 10px;}
+.advantage-section{float:left;width: 180px;text-align:center;padding:10px;}
+.container-advantage{width:1000px;margin:auto;}
+.carcrew-advantage{background-color:#f7f7f7}
+.advantage-section1{float:left;width: 290px;text-align:center;padding:20px;}
+.form-field{border:0;border-bottom: 1px solid black;font-family: Lato;font-size: 16px;color: #b3b5bd;width:100%;padding: 30px 0 3px 10px;outline: none;}
+.sub{border: none;border-radius: 2px;padding: 20px 2rem;text-transform: uppercase;background-color: #F44336;cursor: pointer;margin: 19px auto;color:#fff}
+option{background:url('../images/brandHonda.PNG');}
+.typeOfJob{width:1000px;margin:30px auto;}
+.typeOfJob-mainContainer{background-image:url('../images/typeOfJobBackground.PNG');width:100%;height:800px; }
+.service{width: 250px;height: 214px;background: #fff;padding: 20px;float: left;margin-left: 20px;border: 1px solid;border-radius: 7px;}
+.service-image{margin:auto;width: 112px;}
+.service:hover{-webkit-box-shadow: 3px 6px 18px -2px rgba(247,131,150,1);
+-moz-box-shadow: 3px 6px 18px -2px rgba(247,131,150,1);
+box-shadow: 3px 6px 18px -2px rgba(247,131,150,1);}
+.styleAnchor{text-decoration: none;}
+.leftSection{float:left;width:900px;padding:10px;margin:20px}
+.rightSection{float:left;width:300px;height:600px;background-color: #fff;margin:20px;}
+.jobImage{width:80px;float:left;margin: 13px;}
+.jobName{float:left;width:400px;padding: 10px;font-size: 22px;}
+.jobPrice{float:left;width: 170px;font-size: 19px;padding: 20px;}
+.jobBook{float:left;width:50px;}
+.jobDesc{margin: 20px;background-color: #fff;border-radius: 9px}
+.bookButton{width:66px;padding:5px;background-color: #ec1d04;color:#fff;margin:10px;border:none;cursor:pointer;}
+.jobDesc:hover{box-shadow: 3px 6px 18px -2px rgb(247 211 217);}
+.stikyItem{position:fixed;top:70px;background-color: #ec1d04;color:white;width: 100px;right: 0px;border-radius: 100px 0px 0px 100px;padding: 10px;font-style: 20px;}
+ .reg{margin:auto;}
+  .regEmployee{color:black;text-align:center;font-size:italic;padding:20px;}
+#reg,#login,#book,#author{width:60%; margin:auto}
+label{color:black;font-size:20px;font-style:italic;}
+#fname,#lname,#mobileno,#dateofbirth,#email,#dateofjoining,#login_pass,#login_email,#pass,#confirmpass,#dept,#roll,#state,#city,#address,#age,#bname,#description,#publication,#language,#releasedDate,#noOfCopies,#authorName,#countryy{width:300px;outline:0;padding:5px;border:3px groove;margin: 8px 0px;}
+#sub,#reset{width:146px;outline:0;padding:5px;border:3px groove;color:white;font-size:18px;font-style:italic;background-color:#d80e33}
+.errormsg{color:red;}
+.modal_start{display: none;position: fixed;z-index: 1;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgba(0,0,0,0.4);padding-top: 60px;}
+.show_div{width: 50%;height: fit-content;position:absolute;top:0;bottom:0;left:0;right:0;margin:125px auto;padding: 30px 48px;box-sizing: border-box;border: solid black;background: #fff;z-index:2;display: none;}
+.adminForm{margin:auto;width:25%;}
+

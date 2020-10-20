@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.CarRepairManagementSystem.pojo.VechicleBrand" 
+    table="vechicle_brand"
+>
+
+    <id
+        name="pkVechicleBrandId"
+        type="java.lang.Long"
+        column="pkVechicleBrandId"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="increment" />
+    </id>
+
+    <property
+        name="brandName"
+        type="java.lang.String"
+        column="brandName"
+        not-null="true"
+        length="50"
+    />
+    <property
+        name="brandImage"
+        type="java.lang.String"
+        column="brandImage"
+        length="30"
+    />
+    <property
+        name="isActive"
+        type="java.lang.String"
+        column="isActive"
+        length="20"
+    />
+    <property
+        name="createDate"
+        type="java.sql.Date"
+        column="createDate"
+        length="10"
+    />
+    <property
+        name="createdBy"
+        type="java.lang.String"
+        column="createdBy"
+        length="20"
+    />
+    <property
+        name="modifyDate"
+        type="java.sql.Date"
+        column="modifyDate"
+        length="10"
+    />
+    <property
+        name="modifyBy"
+        type="java.lang.String"
+        column="modifyBy"
+        length="20"
+    />
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to CarModal -->
+    <set
+        name="carModals"
+        lazy="true"
+        inverse="true"
+		cascade="none"
+    >
+        <key>
+            <column name="fkVechicleBrandId" />
+        </key>
+        <one-to-many 
+            class="com.CarRepairManagementSystem.pojo.CarModal"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>
